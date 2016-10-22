@@ -1,0 +1,350 @@
+<App>
+	<ClientPanel>
+	<!-- <JavaScript File="MainView.js"/> -->
+	<PageControl ux:Name="navi">
+	<Page ux:Name="home" Background="#01655B">
+		<ClientPanel >
+			<Image File="Assets/logo.jpeg" Alignment="VerticalCenter" Width="200" Height="200">
+				<Clicked>
+				         <Set navi.Active="login" />
+				 </Clicked>	
+			</Image>
+		</ClientPanel>
+	</Page>
+	<Page ux:Name="login" Background="White">
+		<ClientPanel >
+			<Image File="Assets/logo.jpeg" Alignment="VerticalCenter" Width="200" Height="200">
+				<Clicked>
+				         <Set navi.Active="content" />
+				 </Clicked>	
+			</Image>
+		</ClientPanel>
+	</Page>
+          <Page ux:Name="content">
+	<ClientPanel  >
+	
+		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" Margin="5">
+			<Image File="Assets/back.png" Color="color4" Width="30" Height="30" Margin="10">
+				<Clicked>
+					<Set navi.Active="login" />
+				</Clicked>
+			</Image>
+			<Text ux:Name="titleText" Value="Connect-n-Fly" Color="color0" FontSize="25" Alignment="Center">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			
+		</Grid>
+
+
+
+		<Panel Dock="Top" Height="60" >
+			<Rectangle ux:Name="indicator" CornerRadius="30" Color="color0" LayoutMaster="p1" Margin="0,10" Width="100%" ZOffset="0.1"/>
+			<Grid ColumnCount="5" Margin="-30,0">
+				<Panel ux:Name="p1" Column="0" ColumnSpan="2"/>
+				<Panel ux:Name="p4" Column="3" ColumnSpan="2"/>
+			</Grid>
+
+			<Grid ZOffset="1" Margin="-20,0">
+				<Column ux:Name="col1" Width="1" WidthMetric="Proportion"/>
+				<Column ux:Name="col2" Width="1" WidthMetric="Proportion"/>
+				<Column ux:Name="col3" Width="1" WidthMetric="Proportion"/>
+				<Column ux:Name="col4" Width="1" WidthMetric="Proportion"/>
+
+				<Text ux:Class="TabHeader" Color="White" Alignment="CenterLeft" Opacity="0" Margin="10,0,0,0" MinWidth="100" />
+				<Image ux:Class="TabIcon" Width="20" Height="30" Alignment="Left" />
+
+				<Panel HitTestMode="LocalBounds">
+					<Grid Columns="auto,1*" Margin="40,0" Alignment="Left">
+						<TabIcon ux:Name="c1" File="Assets/basket.png" Color="color0"/>
+						<TabHeader ux:Name="h1" Value="Services" />
+					</Grid>
+					<Clicked>
+						<Set nav.Active="page1" />
+					</Clicked>
+				</Panel>
+				<Panel HitTestMode="LocalBounds">
+					<Grid Columns="auto,1*" Margin="30,0" Alignment="Left">
+						<TabIcon ux:Name="c2" File="Assets/personpin.png" Color="color1"/>
+						<TabHeader ux:Name="h2" Value="Passengers"/>
+					</Grid>
+					<Clicked>
+						<Set nav.Active="page2" />
+					</Clicked>
+				</Panel>
+				<Panel HitTestMode="LocalBounds">
+					<Grid Columns="auto,1*" Margin="30,0" Alignment="Left">
+						<TabIcon ux:Name="c3" File="Assets/question-mark.png" Color="color2"/>
+						<TabHeader ux:Name="h3" Value="Help Desk"/>
+
+					</Grid>
+					<Clicked>
+						<Set nav.Active="page3" />
+					</Clicked>
+				</Panel>
+				<Panel HitTestMode="LocalBounds">
+					<Grid Columns="auto,1*" Margin="30,0" Alignment="Left">
+						<TabIcon ux:Name="c4" File="Assets/feedback_icon.png" Color="color3" />
+						<TabHeader ux:Name="h4" Value="FeedBack"/>
+					</Grid>
+					<Clicked>
+						<Set nav.Active="page4" />
+					</Clicked>
+				</Panel>
+			</Grid>
+		</Panel>
+		<PageControl ux:Name="nav">
+			<NavigationMotion GotoEasing="BackOut" />
+			<Attractor ux:Name="indicatorColorAttractor" Target="indicator.Color" Value="color0" />
+			<Rectangle ux:Name="bgColor" Layer="Background" Color="color0" Opacity="0.12"/>
+			<Attractor ux:Name="bgColorAttractor" Target="bgColor.Color" Value="color0" />
+			<Attractor ux:Name="titleTextAttractor" Target="titleText.Color" Value="color0" />
+
+			<WhileTrue ux:Name="shrinkIndicatorWidth">
+				<Change indicator.Width="90" Duration="0.25"/>
+			</WhileTrue>
+
+			<Image ux:Class="PagePlaceholder" Margin="8,10,8,0" StretchMode="UniformToFill" ContentAlignment="Top"/>
+
+			<Page ux:Name="page1" Background="White">
+				<ScrollView>
+				<StackPanel Padding="15">
+					<Image File="Assets/assistance.jpg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" >
+						<Clicked>
+						<Set navi.Active="page5" />
+						</Clicked>
+					</Image>
+					<Text ux:Name="special_ass" Value="Special Assistance" Color="color0" FontSize="25" Alignment="Center">
+					<Font File="Assets/Fonts/Fabrica.otf" />
+					</Text>
+					<Image  File="Assets/staff.jpeg" Margin="8,10,8,10" StretchMode="UniformToFill" Height= "200">
+						<Clicked>
+						<Set navi.Active="page6" />
+						</Clicked>
+					</Image>
+					<Text ux:Name="Inflight" Value="Inflight Services" Color="color0" FontSize="25" Alignment="Center">
+					<Font File="Assets/Fonts/Fabrica.otf" />
+					</Text>
+					<Image File="Assets/shopping.jpeg" StretchMode="UniformToFill"  Margin="8,10,8,10"  Height= "200"/>
+					<Text ux:Name="shopping" Value="Shopping" Color="color0" FontSize="25" Alignment="Center">
+					<Font File="Assets/Fonts/Fabrica.otf" />
+					</Text>
+				  					 
+				</StackPanel>
+				</ScrollView>	
+				<WhileActive Threshold="0.5">
+					<Set shrinkIndicatorWidth.Value="false" />
+					<Set indicatorColorAttractor.Value="color0" />
+					<Set bgColorAttractor.Value="color0" />
+					<Set titleTextAttractor.Value="color0" />
+				</WhileActive>
+				<ActivatingAnimation>
+					<Change h1.Opacity="1" />
+					<Change col1.Width="2" />
+					<Change c1.Color="White" />
+				</ActivatingAnimation>
+			</Page>
+			<Page ux:Name="page2" Background="White">
+				<ScrollView>
+				<StackPanel Padding="15">
+					<Image File="Assets/travellers.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+					<Text ux:Name="faq" Value="Make Travel Buddies" Color="color0" FontSize="25" Alignment="Center">
+					<Font File="Assets/Fonts/Fabrica.otf" />
+					</Text>
+								  					 
+				</StackPanel>
+				</ScrollView>	
+				<WhileActive Threshold="0.5">
+					<Set shrinkIndicatorWidth.Value="true" />
+					<Set indicatorColorAttractor.Value="color1" />
+					<Set bgColorAttractor.Value="color1" />
+					<Set titleTextAttractor.Value="color1" />
+				</WhileActive>
+				<ActivatingAnimation>
+					<Change h2.Opacity="1" />
+					<Change col2.Width="2" />
+					<Change c2.Color="White" />
+				</ActivatingAnimation>
+			</Page>
+			<Page ux:Name="page3" Background="White">
+				<StackPanel Padding="15">
+				<Image File="Assets/helpdesk.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+					<Text ux:Name="HelpDesk" Value="Start Chat" Color="color0" FontSize="25" Alignment="Center">
+					<Font File="Assets/Fonts/Fabrica.otf" />
+					</Text>
+				</StackPanel>
+				<WhileActive Threshold="0.5">
+					<Set shrinkIndicatorWidth.Value="true" />
+					<Set indicatorColorAttractor.Value="color2" />
+					<Set bgColorAttractor.Value="color2" />
+					<Set titleTextAttractor.Value="color2" />
+				</WhileActive>
+				<ActivatingAnimation>
+					<Change h3.Opacity="1" />
+					<Change col3.Width="2" />
+					<Change c3.Color="White" />
+				</ActivatingAnimation>
+			</Page>
+			<Page ux:Name="page4" Background="White">
+				<StackPanel Padding="15">
+				<Image File="Assets/feedback.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+					<Text ux:Name="FeedBack" Value="Send FeedBack" Color="color0" FontSize="25" Alignment="Center">
+					<Font File="Assets/Fonts/Fabrica.otf" />
+					</Text>
+				</StackPanel>
+				<WhileActive Threshold="0.5">
+					<Set shrinkIndicatorWidth.Value="false" />
+					<Set indicatorColorAttractor.Value="color3" />
+					<Set bgColorAttractor.Value="color3" />
+					<Set titleTextAttractor.Value="color3" />
+				</WhileActive>
+				<ActivatingAnimation Scale="0.333">
+					<Move Target="indicator" X="1" RelativeTo="PositionOffset" RelativeNode="p4"/>
+				</ActivatingAnimation>
+				<ActivatingAnimation>
+					<Change h4.Opacity="1" />
+					<Change col4.Width="2" />
+					<Change c4.Color="White" />
+				</ActivatingAnimation>
+			</Page>
+			
+
+		</PageControl>
+
+	</ClientPanel>
+</Page>
+<Page ux:Name="page5" Background="White">
+	<ClientPanel Padding="10">
+		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
+			<Image File="Assets/back.png" Color="color4" Width="30" Height="30" Margin="10">
+				<Clicked>
+					<Set navi.Active="content" />
+				</Clicked>
+			</Image>
+			<Text Value="Connect-n-Fly" Color="color0" FontSize="25" Alignment="HorizontalCenter">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			
+		</Grid>
+		<WebView Dock="Fill" Url="http://www.google.com">
+		</WebView>
+	</ClientPanel>
+</Page>
+<Page ux:Name="page6" Background="White">
+	<ClientPanel Padding="10">
+		
+		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
+			<Image File="Assets/back.png" Color="color4" Width="20" Height="20" Margin="10">
+				<Clicked>
+					<Set navi.Active="content" />
+				</Clicked>
+			</Image>
+			<Text Value="Connect-n-Fly" Color="color0" FontSize="25" Alignment="HorizontalCenter">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			
+		</Grid>
+		<ScrollView>
+		<StackPanel>
+			<Image File="Assets/requestservice.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" >
+						<Clicked>
+						<Set navi.Active="page6a" />
+						</Clicked>
+					</Image>
+					<Text Value="Request a Service" Color="color0" FontSize="25" Alignment="Center">
+					<Font File="Assets/Fonts/Fabrica.otf" />
+					</Text>
+
+					<Image  File="Assets/specialmeal.jpeg" Margin="8,10,8,10" StretchMode="UniformToFill" Height= "200">
+						<Clicked>
+						<Set navi.Active="page6b" />
+						</Clicked>
+					</Image>
+					<Text  Value="Order Special Meals" Color="color0" FontSize="25" Alignment="Center">
+					<Font File="Assets/Fonts/Fabrica.otf" />
+					</Text>
+
+					<Image File="Assets/Toilets.png" StretchMode="UniformToFill"  Margin="8,10,8,10"  Height= "200">
+						<Clicked>
+						<Set navi.Active="page6c" />
+						</Clicked>
+					</Image>
+
+					<Text  Value="Status of the Toilets" Color="color0" FontSize="25" Alignment="Center">
+						<Font File="Assets/Fonts/Fabrica.otf" />
+					</Text>
+		</StackPanel>
+	</ScrollView>
+	</ClientPanel>
+</Page>
+<Page ux:Name="page6a" Background="White">
+	<ClientPanel Padding="10">
+		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
+			<Image File="Assets/back.png" Color="color4" Width="20" Height="20" Margin="10">
+				<Clicked>
+					<Set navi.Active="page6" />
+				</Clicked>
+			</Image>
+			<Text  Value="Connect-n-Fly" Color="color0" FontSize="25" Alignment="HorizontalCenter">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			
+		</Grid>
+		<WebView Dock="Fill" Url="http://www.google.com">
+		</WebView>
+	</ClientPanel>
+</Page>
+<Page ux:Name="page6b" Background="White">
+	<ClientPanel Padding="10">
+		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
+			<Image File="Assets/back.png" Color="color4" Width="30" Height="30" Margin="10">
+				<Clicked>
+					<Set navi.Active="page6" />
+				</Clicked>
+			</Image>
+			<Text  Value="Connect-n-Fly" Color="color0" FontSize="25" Alignment="HorizontalCenter">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			
+		</Grid>
+		<ScrollView>
+		<StackPanel>
+			<Image File="Assets/Fruit-platter.jpg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+			<Text  Value="Fruit Platter Meal" Color="color0" FontSize="25" Alignment="Left">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			<Image File="Assets/order.png" Width="100" Height="30" Alignment="Right"/>
+			<Image File="Assets/Fruit-platter.jpg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+			<Text  Value="Baby Meal" Color="color0" FontSize="25" Alignment="Left">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			<Image File="Assets/order.png" Width="100" Height="30" Alignment="Right"/><Image File="Assets/diaorder_jpeg.jpg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+			<Text  Value="Diabetic Meal" Color="color0" FontSize="25" Alignment="Left">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			<Image File="Assets/order.png" Width="100" Height="30" Alignment="Right"/>
+
+		</StackPanel>
+	</ScrollView>
+	</ClientPanel>
+</Page>
+<Page ux:Name="page6c" Background="White">
+	<ClientPanel Padding="10">
+		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
+			<Image File="Assets/back.png" Color="color4" Width="30" Height="30" Margin="10">
+				<Clicked>
+					<Set navi.Active="page6" />
+				</Clicked>
+			</Image>
+			<Text  Value="Connect-n-Fly" Color="color0" FontSize="25" Alignment="HorizontalCenter">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			
+		</Grid>
+		<WebView Dock="Fill" Url="http://www.google.com">
+		</WebView>
+	</ClientPanel>
+</Page>
+</PageControl>
+</ClientPanel>
+
+</App>
