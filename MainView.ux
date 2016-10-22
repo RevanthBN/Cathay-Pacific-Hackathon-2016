@@ -2,6 +2,7 @@
 	<ClientPanel>
 	<!-- <JavaScript File="MainView.js"/> -->
 	<PageControl ux:Name="navi">
+	<Font File="Assets/Fonts/Fabrica.otf" ux:Global="font" />
 	<Page ux:Name="home" Background="#01655B">
 		<ClientPanel >
 			<Image File="Assets/logo.jpeg" Alignment="VerticalCenter" Width="200" Height="200">
@@ -20,6 +21,7 @@
 			</Image>
 		</ClientPanel>
 	</Page>
+
           <Page ux:Name="content">
 	<ClientPanel  >
 	
@@ -124,7 +126,11 @@
 					<Text ux:Name="Inflight" Value="Inflight Services" Color="color0" FontSize="25" Alignment="Center">
 					<Font File="Assets/Fonts/Fabrica.otf" />
 					</Text>
-					<Image File="Assets/shopping.jpeg" StretchMode="UniformToFill"  Margin="8,10,8,10"  Height= "200"/>
+					<Image File="Assets/shopping.jpeg" StretchMode="UniformToFill"  Margin="8,10,8,10"  Height= "200">
+						<Clicked>
+						<Set navi.Active="page7" />
+						</Clicked>
+					</Image>
 					<Text ux:Name="shopping" Value="Shopping" Color="color0" FontSize="25" Alignment="Center">
 					<Font File="Assets/Fonts/Fabrica.otf" />
 					</Text>
@@ -146,7 +152,11 @@
 			<Page ux:Name="page2" Background="White">
 				<ScrollView>
 				<StackPanel Padding="15">
-					<Image File="Assets/travellers.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+					<Image File="Assets/travellers.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" >
+						<Clicked>
+						<Set navi.Active="chatpage" />
+						</Clicked>
+					</Image>
 					<Text ux:Name="faq" Value="Make Travel Buddies" Color="color0" FontSize="25" Alignment="Center">
 					<Font File="Assets/Fonts/Fabrica.otf" />
 					</Text>
@@ -214,8 +224,10 @@
 </Page>
 <Page ux:Name="page5" Background="White">
 	<ClientPanel Padding="10">
-		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
-			<Image File="Assets/back.png" Color="color4" Width="30" Height="30" Margin="10">
+				<ScrollView>
+		<StackPanel>
+			<Grid Columns="auto,1*,auto" Height="50" >
+			<Image File="Assets/back.png" Color="color4" Width="30" Height="25" Margin="10,0,10,0">
 				<Clicked>
 					<Set navi.Active="content" />
 				</Clicked>
@@ -224,9 +236,114 @@
 				<Font File="Assets/Fonts/Fabrica.otf" />
 			</Text>
 			
-		</Grid>
-		<WebView Dock="Fill" Url="http://www.google.com">
-		</WebView>
+			</Grid>
+
+			<Text Value="I. Services for Infants and Kids" Color="color0" FontSize="25" Alignment="Center" Margin="0,10,0,0" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+
+			<StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,10,0,0">
+			<Checkbox ux:Name="myCheckbox1" Width="30" Height="15" Alignment="Left" Margin="0,0,30,0"/>
+			<Text Value="Request for Baby Basket." Color="color0" FontSize="13" Alignment="Left" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>			
+		        </StackPanel>
+
+		        <StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,10,0,0">
+			<Checkbox ux:Name="myCheckbox2" Width="30" Height="15" Alignment="Left" Margin="0,0,30,0"/>
+			<Text Value="Request for Baby pillows and blankets." Color="color0" FontSize="13" Alignment="Left" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>			
+		        </StackPanel>
+
+		        <StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,10,0,0">
+			<Checkbox ux:Name="myCheckbox3" Width="30" Height="15" Alignment="Left" Margin="0,0,30,0"/>
+			<Text Value="Request for warm milk and water in a baby feeder." Color="color0" FontSize="13" Alignment="Left" TextWrapping="Wrap" >
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>			
+		        </StackPanel>
+
+		        <StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,10,0,0">
+			<Checkbox ux:Name="myCheckbox4" Width="30" Height="15" Alignment="Left" Margin="0,0,30,0"/>
+			<Text Value="Request for additional diapers." Color="color0" FontSize="13" Alignment="Left" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>			
+		        </StackPanel>
+
+		        <StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,10,0,0">
+			<Checkbox ux:Name="myCheckbox5" Width="30" Height="15" Alignment="Left" Margin="0,0,30,0"/>
+			<Text Value="Request for additional seatbelts for kids." Color="color0" FontSize="13" Alignment="Left" TextWrapping="Wrap" >
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>			
+		        </StackPanel>
+
+		        <StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,10,0,0">
+			<Checkbox ux:Name="myCheckbox6" Width="30" Height="15" Alignment="Left" Margin="0,0,30,0"/>
+			<Text Value="Request for a Coloring-kit for kids" Color="color0" FontSize="13" Alignment="Left" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>			
+		        </StackPanel>
+			
+			<Text Value="II. Request for Medical Attention" Color="color0" FontSize="25" Alignment="Center" Margin="0,10,0,0" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+
+			<StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,10,0,0">
+			<Checkbox ux:Name="myCheckbox7" Width="30" Height="15" Alignment="Left" Margin="0,0,30,0"/>
+			<Text Value="Request for Diabetic Meal." Color="color0" FontSize="13" Alignment="Left" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>			
+		        </StackPanel>
+
+		        <StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,10,0,0">
+			<Checkbox ux:Name="myCheckbox8" Width="30" Height="15" Alignment="Left" Margin="0,0,30,0"/>
+			<Text Value="Request for Low salt meal." Color="color0" FontSize="13" Alignment="Left" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>			
+		        </StackPanel>
+
+		        <StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,10,0,0">
+			<Checkbox ux:Name="myCheckbox9" Width="30" Height="15" Alignment="Left" Margin="0,0,30,0"/>
+			<Text Value="Request for Additional blankets." Color="color0" FontSize="13" Alignment="Left" TextWrapping="Wrap" >
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>			
+		        </StackPanel>
+
+		        <StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,10,0,0">
+			<Checkbox ux:Name="myCheckbox10" Width="30" Height="15" Alignment="Left" Margin="0,0,30,0"/>
+			<Text Value="Request for medical care during flight ." Color="color0" FontSize="13" Alignment="Left" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>			
+		        </StackPanel>
+
+		        <StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,10,0,0">
+			<Checkbox ux:Name="myCheckbox11" Width="30" Height="15" Alignment="Left" Margin="0,0,30,0"/>
+			<Text Value="Request for a seat closer to the Restrooms." Color="color0" FontSize="13" Alignment="Left" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>			
+		        </StackPanel>
+
+		        <Text Value="III. Services for Pets" Color="color0" FontSize="25" Alignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" >
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+
+			<StackPanel  ContentAlignment="Left" Margin="10" >
+				<Text Value="Enter the Details of the Pet" Color="color0" FontSize="15" Alignment="Left" TextWrapping="Wrap" TextAlignment="Center">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			<TextInput ux:Name="text" PlaceholderText="Details of Pet" PlaceholderColor="#ccc" Height="50" Width="300" Padding="5" Font="font" >
+			        <Rectangle Layer="Background" Alignment="Center">
+			            <Stroke Width="5" Brush="#BBB" />
+			        </Rectangle>
+			  </TextInput>			
+		        </StackPanel>
+
+		        
+
+
+		       
+		</StackPanel>
+	</ScrollView>
 	</ClientPanel>
 </Page>
 <Page ux:Name="page6" Background="White">
@@ -245,7 +362,7 @@
 		</Grid>
 		<ScrollView>
 		<StackPanel>
-			<Image File="Assets/requestservice.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" >
+			<Image File="Assets/requestservice.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200"  >
 						<Clicked>
 						<Set navi.Active="page6a" />
 						</Clicked>
@@ -313,11 +430,12 @@
 				<Font File="Assets/Fonts/Fabrica.otf" />
 			</Text>
 			<Image File="Assets/order.png" Width="100" Height="30" Alignment="Right"/>
-			<Image File="Assets/Fruit-platter.jpg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+			<Image File="Assets/baby.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
 			<Text  Value="Baby Meal" Color="color0" FontSize="25" Alignment="Left">
 				<Font File="Assets/Fonts/Fabrica.otf" />
 			</Text>
-			<Image File="Assets/order.png" Width="100" Height="30" Alignment="Right"/><Image File="Assets/diaorder_jpeg.jpg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+			<Image File="Assets/order.png" Width="100" Height="30" Alignment="Right"/>
+			<Image File="Assets/diaorder_jpeg.jpg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
 			<Text  Value="Diabetic Meal" Color="color0" FontSize="25" Alignment="Left">
 				<Font File="Assets/Fonts/Fabrica.otf" />
 			</Text>
@@ -340,7 +458,116 @@
 			</Text>
 			
 		</Grid>
-		<WebView Dock="Fill" Url="http://www.google.com">
+		
+				  
+		<StackPanel  Padding="20" >
+			<StackPanel Orientation="Horizontal" ContentAlignment="Left" Padding="0,40,0,0" >
+			<Text Value="Toilet 1" Color="color0" FontSize="25" Alignment="Left" Margin="0,0,150,0">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+		          <Circle  Width="30" Height="20" Color="Green" Margin="30,0,0,0" Alignment="Right"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,40,0,0" >
+			<Text Value="Toilet 2" Color="color0" FontSize="25" Alignment="Left" Margin="0,0,150,0">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+		          <Circle  Width="30" Height="20" Color="Green" Margin="30,0,0,0" Alignment="Right"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" ContentAlignment="Left"   Padding="0,40,0,0">
+			<Text Value="Toilet 3" Color="color0" FontSize="25" Alignment="Left" Margin="0,0,150,0">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+		          <Circle  Width="30" Height="20" Color="Red" Margin="30,0,0,0" Alignment="Right"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,40,0,0">
+			<Text Value="Toilet 4" Color="color0" FontSize="25" Alignment="Left" Margin="0,0,150,0">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+		          <Circle  Width="30" Height="20" Color="Red" Margin="30,0,0,0" Alignment="Right"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,40,0,0">
+			<Text Value="Toilet 5" Color="color0" FontSize="25" Alignment="Left" Margin="0,0,150,0">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+		          <Circle  Width="30" Height="20" Color="Green" Margin="30,0,0,0" Alignment="Right"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" ContentAlignment="Left"  Padding="0,40,0,0">
+			<Text Value="Toilet 6" Color="color0" FontSize="25" Alignment="Left" Margin="0,0,150,0">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+		          <Circle  Width="30" Height="20" Color="Red" Margin="30,0,0,0" Alignment="Right"/>
+			</StackPanel>
+
+			
+			
+		</StackPanel>
+	</ClientPanel>
+</Page>
+<Page ux:Name="page7" Background="White">
+	<ClientPanel Padding="10">
+		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
+			<Image File="Assets/back.png" Color="color4" Width="30" Height="30" Margin="10">
+				<Clicked>
+					<Set navi.Active="content" />
+				</Clicked>
+			</Image>
+			<Text Value="Connect-n-Fly" Color="color0" FontSize="25" Alignment="HorizontalCenter">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			
+		</Grid>
+		<ScrollView>
+			<StackPanel>
+
+			<Image File="Assets/watch_jpeg.jpg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+			<Text  Value="SALVATORE FERRAGAMO Buckle Collection Timepiece" Color="color0" FontSize="25" Alignment="Left" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			<Text  Value="Price: HKD9,500 / USD1,218" Color="color0" FontSize="25" Alignment="Center">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			<Image File="Assets/order.png" Width="100" Height="30" Alignment="Right"/>
+
+			<Image File="Assets/gift.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+			<Text  Value="Chopstickers Gift Set" Color="color0" FontSize="25" Alignment="Left">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			<Text  Value="Price: HKD270 / USD35" Color="color0" FontSize="25" Alignment="Center">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			<Image File="Assets/order.png" Width="100" Height="30" Alignment="Right"/>
+
+			<Image File="Assets/plane.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
+			<Text  Value="Premium Series - A350-900 Model (1:200)" Color="color0" FontSize="25" Alignment="Left" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			<Text  Value="Price: HKD520 / USD67" Color="color0" FontSize="25" Alignment="Center">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			<Image File="Assets/order.png" Width="100" Height="30" Alignment="Right"/>
+
+		</StackPanel>
+	</ScrollView>
+	</ClientPanel>
+</Page>
+<Page ux:Name="chatpage" Background="White">
+	<ClientPanel Padding="10">
+		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
+			<Image File="Assets/back.png" Color="color4" Width="30" Height="30" Margin="10">
+				<Clicked>
+					<Set navi.Active="content" />
+				</Clicked>
+			</Image>
+			<Text Value="Connect-n-Fly" Color="color0" FontSize="25" Alignment="HorizontalCenter">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			
+		</Grid>
+		<WebView Dock="Fill" Url="http://ec2-54-254-138-148.ap-southeast-1.compute.amazonaws.com:8080/" Padding="15" >
 		</WebView>
 	</ClientPanel>
 </Page>
