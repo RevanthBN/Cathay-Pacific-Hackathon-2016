@@ -4,6 +4,7 @@
     </Clicked>
 
     <Font File="Assets/Fonts/FontAwesome.otf" ux:Global="fa_icons" />
+    
     <Rectangle Width="15" Height="15" CornerRadius="3" >
         <LinearGradient StartPoint="0,0" EndPoint="0,1">
             <GradientStop Offset="0" Color="#f0f0f0" />

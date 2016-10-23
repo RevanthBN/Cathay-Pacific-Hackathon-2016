@@ -1,10 +1,24 @@
 {
   "RootNamespace":"",
   "Packages": [
-    "Fuse",
-    "FuseJS"
+  	"Fuse",
+  	"FuseJS",
+    "Fuse.Launcher"
   ],
   "Includes": [
     "*"
-  ]
+  ],
+  "Android": {
+  "ApplicationLabel": "ConnectnFly",
+   "VersionName": "1.0.0",
+  "Description": "$(Description)",
+  "Icons": {
+    "LDPI": "assets/logo.png",
+    "MDPI": "assets/logo.png",
+    "HDPI": "assets/logo.png",
+    "XHDPI": "assets/logo.png",
+    "XXHDPI": "assets/logo.png",
+    "XXXHDPI": "assets/logo.png"
+    }
+    }
 }

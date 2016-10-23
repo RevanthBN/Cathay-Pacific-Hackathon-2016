@@ -1,24 +1,71 @@
 <App>
 	<ClientPanel>
-	<!-- <JavaScript File="MainView.js"/> -->
+	<JavaScript>
+var InterApp = require("FuseJS/InterApp");
+
+InterApp.onReceivedUri = function(uri) {
+    console.log("Launched with URI", uri);
+}
+ function launch()
+ {
+ 	InterApp.launchUri("facebook://facebook.com/notifications");
+ }
+module.exports = {
+   InterApp:InterApp,
+   launch:launch
+};
+
+</JavaScript>
 	<PageControl ux:Name="navi">
 	<Font File="Assets/Fonts/Fabrica.otf" ux:Global="font" />
 	<Page ux:Name="home" Background="#01655B">
 		<ClientPanel >
+			<StackPanel ContentAlignment="VerticalCenter">
+			<Text Value="Cathay Pacific" Color="White" FontSize="45" Alignment="Center" TextWrapping="Wrap">
+				<Font File="Assets/Fonts/SATAM.ttf" />
+			</Text>
 			<Image File="Assets/logo.jpeg" Alignment="VerticalCenter" Width="200" Height="200">
 				<Clicked>
 				         <Set navi.Active="login" />
 				 </Clicked>	
+
 			</Image>
+		</StackPanel>
 		</ClientPanel>
 	</Page>
-	<Page ux:Name="login" Background="White">
+	<Page ux:Name="login" Background="#01655B">
 		<ClientPanel >
-			<Image File="Assets/logo.jpeg" Alignment="VerticalCenter" Width="200" Height="200">
-				<Clicked>
+			<StackPanel ContentAlignment="VerticalCenter">
+			<!-- <Text Value="Login" Color="White" FontSize="35" Alignment="Center" Margin="10">
+				<Font File="Assets/Fonts/SATAM.ttf" />
+			</Text> -->
+			
+			            <Text  Margin="10" Value="Enter the PNR" Color="#FFF" FontSize="20"
+			            Alignment="Center" >
+			            <Font File="Assets/Fonts/Fabrica.otf" />
+				   </Text>
+			            <TextInput ux:Name="text2" PlaceholderText="PNR" PlaceholderColor="#FFF" Height="50" Width="300" TextColor="#01655B"  Padding="5" Font="font" Alignment="Center" Margin="10">
+			        <Rectangle Layer="Background" Alignment="Center" Height="50" Width="300" Color="#FFF"/>
+			  	</TextInput>
+			       
+			       
+			            <Text Dock="Left" Margin="10" Value="Enter the Passenger Name" FontSize="20" Color="#FFF" Alignment="Center">
+			            	<Font File="Assets/Fonts/Fabrica.otf" />
+					</Text>
+			            <TextInput ux:Name="text1" PlaceholderText="Passenger Name" PlaceholderColor="#FFF" Height="50" TextColor="#01655B" Width="300" Padding="5" Font="font" >
+			        <Rectangle Layer="Background" Alignment="Center" Height="50" Width="300" Color="#FFF"/>
+			  	</TextInput>
+			     
+			        <Button  Width="300" Height="50" Background="White" Margin="10,30,10,20">
+			        	<Text Value="Login" Color="#01655B" Alignment="Center" FontSize="20">
+			        		<Font File="Assets/Fonts/SATAM.ttf" />
+				</Text>
+			        		<Clicked>
 				         <Set navi.Active="content" />
-				 </Clicked>	
-			</Image>
+				 	</Clicked>	
+				 </Button>
+			
+		</StackPanel>
 		</ClientPanel>
 	</Page>
 
@@ -149,7 +196,7 @@
 					<Change c1.Color="White" />
 				</ActivatingAnimation>
 			</Page>
-			<Page ux:Name="page2" Background="White">
+			<Page ux:Name="page2" Background="White" >
 				<ScrollView>
 				<StackPanel Padding="15">
 					<Image File="Assets/travellers.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" >
@@ -176,11 +223,16 @@
 				</ActivatingAnimation>
 			</Page>
 			<Page ux:Name="page3" Background="White">
+				
 				<StackPanel Padding="15">
-				<Image File="Assets/helpdesk.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" />
-					<Text ux:Name="HelpDesk" Value="Start Chat" Color="color0" FontSize="25" Alignment="Center">
+				<Image File="Assets/helpdesk.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200" >
+					<Clicked>
+						<Set navi.Active="helpdesk" />
+						</Clicked>
+					</Image>
+					<Text ux:Name="HelpDesk" Value="Start Chat" Color="color0" FontSize="25" Alignment="Center" >
 					<Font File="Assets/Fonts/Fabrica.otf" />
-					</Text>
+					 </Text>
 				</StackPanel>
 				<WhileActive Threshold="0.5">
 					<Set shrinkIndicatorWidth.Value="true" />
@@ -222,7 +274,7 @@
 
 	</ClientPanel>
 </Page>
-<Page ux:Name="page5" Background="White">
+<Page ux:Name="page5" Background="White" Visibility="Hidden">
 	<ClientPanel Padding="10">
 				<ScrollView>
 		<StackPanel>
@@ -346,7 +398,7 @@
 	</ScrollView>
 	</ClientPanel>
 </Page>
-<Page ux:Name="page6" Background="White">
+<Page ux:Name="page6" Background="White" Visibility="Hidden">
 	<ClientPanel Padding="10">
 		
 		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
@@ -363,9 +415,6 @@
 		<ScrollView>
 		<StackPanel>
 			<Image File="Assets/requestservice.jpeg" StretchMode="UniformToFill" Margin="8,10,8,10"  Height= "200"  >
-						<Clicked>
-						<Set navi.Active="page6a" />
-						</Clicked>
 					</Image>
 					<Text Value="Request a Service" Color="color0" FontSize="25" Alignment="Center">
 					<Font File="Assets/Fonts/Fabrica.otf" />
@@ -393,24 +442,8 @@
 	</ScrollView>
 	</ClientPanel>
 </Page>
-<Page ux:Name="page6a" Background="White">
-	<ClientPanel Padding="10">
-		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
-			<Image File="Assets/back.png" Color="color4" Width="20" Height="20" Margin="10">
-				<Clicked>
-					<Set navi.Active="page6" />
-				</Clicked>
-			</Image>
-			<Text  Value="Connect-n-Fly" Color="color0" FontSize="25" Alignment="HorizontalCenter">
-				<Font File="Assets/Fonts/Fabrica.otf" />
-			</Text>
-			
-		</Grid>
-		<WebView Dock="Fill" Url="http://www.google.com">
-		</WebView>
-	</ClientPanel>
-</Page>
-<Page ux:Name="page6b" Background="White">
+
+<Page ux:Name="page6b" Background="White" Visibility="Hidden">
 	<ClientPanel Padding="10">
 		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
 			<Image File="Assets/back.png" Color="color4" Width="30" Height="30" Margin="10">
@@ -445,7 +478,7 @@
 	</ScrollView>
 	</ClientPanel>
 </Page>
-<Page ux:Name="page6c" Background="White">
+<Page ux:Name="page6c" Background="White" Visibility="Hidden">
 	<ClientPanel Padding="10">
 		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
 			<Image File="Assets/back.png" Color="color4" Width="30" Height="30" Margin="10">
@@ -507,7 +540,7 @@
 		</StackPanel>
 	</ClientPanel>
 </Page>
-<Page ux:Name="page7" Background="White">
+<Page ux:Name="page7" Background="White" Visibility="Hidden">
 	<ClientPanel Padding="10">
 		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
 			<Image File="Assets/back.png" Color="color4" Width="30" Height="30" Margin="10">
@@ -554,7 +587,26 @@
 	</ScrollView>
 	</ClientPanel>
 </Page>
-<Page ux:Name="chatpage" Background="White">
+<Page ux:Name="chatpage" Background="White" Visibility="Hidden">
+	<ClientPanel >
+		<Grid Columns="auto,1*,auto" Height="20" Dock="Top" >
+			<Image File="Assets/back.png" Color="color4" Width="30" Height="20" Margin="10">
+				<Clicked>
+					<Set navi.Active="content" />
+				</Clicked>
+			</Image>
+			<Text Value="Connect-n-Fly" Color="color0" FontSize="20" Alignment="HorizontalCenter">
+				<Font File="Assets/Fonts/Fabrica.otf" />
+			</Text>
+			
+		</Grid>
+		<NativeViewHost>
+		<WebView Dock="Fill" Url="http://ec2-54-254-138-148.ap-southeast-1.compute.amazonaws.com:8080/"  >
+		</WebView>
+		</NativeViewHost>
+	</ClientPanel>
+</Page>
+<Page ux:Name="helpdesk" Background="White" Visibility="Hidden">
 	<ClientPanel Padding="10">
 		<Grid Columns="auto,1*,auto" Height="50" Dock="Top" >
 			<Image File="Assets/back.png" Color="color4" Width="30" Height="30" Margin="10">
@@ -567,10 +619,15 @@
 			</Text>
 			
 		</Grid>
-		<WebView Dock="Fill" Url="http://ec2-54-254-138-148.ap-southeast-1.compute.amazonaws.com:8080/" Padding="15" >
+		<NativeViewHost>
+		<WebView Dock="Fill" Url="https://www.facebook.com/Connect-n-Flight-1087282564688962/" Padding="15" Margin="10" >
 		</WebView>
+		</NativeViewHost>
 	</ClientPanel>
 </Page>
+
+
+
 </PageControl>
 </ClientPanel>
 
